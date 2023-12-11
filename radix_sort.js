@@ -169,7 +169,7 @@
             cs1.setStorageBuffer("bData1", bData1);
             cs1.setStorageBuffer("bData2", bData2);
 
-            if ( !RadixHelper.bGroup1_t || !RadixHelper.bGroup2_t) {
+            if ( !RadixHelper.bGroup1_temp || !RadixHelper.bGroup2_temp) {
                 let bGroup1_t = createBuffer0(4);
                 let bGroup2_t = createBuffer0(4);
 
@@ -334,7 +334,7 @@
             cs2.setStorageBuffer("bData1", bData1);
             cs2.setStorageBuffer("bData2", bData2);
 
-            if ( !RadixHelper.bGroup1_t || !RadixHelper.bGroup2_t) {
+            if ( !RadixHelper.bGroup1_temp || !RadixHelper.bGroup2_temp) {
                 let bGroup1_t = createBuffer0(4);
                 let bGroup2_t = createBuffer0(4);
 
