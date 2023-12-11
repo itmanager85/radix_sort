@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+    <canvas id="renderCanvas"></canvas>
+    <style>
+      body, #renderCanvas {
+        margin: 0;
+        width: 100%;
+        height: 100vh;
+      }
+    </style>
+  
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="radix_sort.js"></script> 
+    <script>
+        // Get the canvas DOM element
+        var canvas = document.getElementById('renderCanvas');
+        // Load the 3D engine
+        async function createEngine() {
+            const webGPUSupported = await BABYLON.WebGPUEngine.IsSupportedAsync;
+            if (webGPUSupported) {
+                const engine = new BABYLON.WebGPUEngine(canvas);
+                await engine.initAsync();
+
+                //document.write("<H1>webGPU is supported !!");
+                return engine;
+            }
+
+            //document.write("<H1>webGPU not supported !!");
+            //return new BABYLON.Engine(canvas, true); // WEBGL2
+        }
+
+        var engine = null;
+
+        window.initFunction = async function() {
+          engine = await createEngine();
+
+          window.addEventListener('resize', function(){
+              engine.resize();
+          });
+
+          engine.runRenderLoop(function () {});
+        }
+
+        initFunction().then(() => {
+
+          // TEST HERE !!!
+          //first execution more slower
+          const NUM_TEST_COUNT = 10; //1; //
+          for (let i=0; i<NUM_TEST_COUNT; i++) {
+            test(engine);
+          }
+          
+        });
+
+      </script>
+  </body>
+  </html>
